@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Chapter 5: Variables </title>
+    </head>
+    <body>
+        <strong>Exercise 1: Cart Quantity<br></strong><BR>
+
+        <button onclick="
+        console.log(`Cart Quantity: ${cartquantity}`)"> Show Quantity </button>
+
+        <button onclick="
+        cartquantity = cartquantity + 1;
+        console.log(`Cart Quantity: ${cartquantity}`)"> Add to Cart</button>
+
+        <button onclick="
+        cartquantity = cartquantity + 2;
+        console.log(`Cart Quantity: ${cartquantity}`)">+2</button>
+
+        <button onclick="
+        cartquantity = cartquantity + 3;
+        console.log(`Cart Quantity: ${cartquantity}`)">+3</button>
+
+        <button onclick="
+        cartquantity = cartquantity - cartquantity;
+        console.log('Cart was reset.')
+        console.log(`Cart Quantity: ${cartquantity}`)"> Reset Cart </button>
+
+        <script>
+
+/*There are three ways to create VARIABLES
+(I) let
+(II) const - but the value inside the variable will stay CONSTANT
+(III) var - same as let */
+            
+        let cartquantity=0
+        </script>
+
+<!--Exercise 2: You ordered 1 coffee (RM5), 2 bagels (RM3 each), 1 soup(RM9), 
+                Display'Cost of Food: RM__' with tax 10%-->
+
+    <br><br><br><strong> Exercise 2: Cost of Food <br><br></strong>
+
+    <script>
+    let costofFood=0
+    let products=''
+    </script>
+
+    <button onclick="
+    console.log(`Cost of Food: RM ${costofFood} \nProducts: ${products}`)"> Show Total Costs</button>
+
+    <button onclick="
+    costofFood+=5;
+    products += ' Coffee,'
+    console.log(`Cost of Food: RM ${costofFood} \nProducts: ${products}`)"> Coffee </button>
+
+    <button onclick="
+    costofFood+=3;
+    products += ' Baggel,'
+    console.log(`Cost of Food: RM ${costofFood} \nProducts: ${products}`)"> Baggel </button>
+
+    <button onclick="
+    costofFood+=9;
+    products += ' Soup,'
+    console.log(`Cost of Food: RM ${costofFood} \nProducts: ${products}`)"> Soup </button>
+
+    <button onclick="
+    costofFood*=110/100;
+    console.log(`Cost of Food: RM ${costofFood} \nProducts: ${products}`)"> After Tax 10% </button>
+
+    <button onclick="
+    costofFood= costofFood-costofFood;
+    products=products-products
+    console.log('Cart has been cleared.')
+    console.log(`Cost of Food: RM ${costofFood} \nProducts: ${products}`)"> Clear Cart </button>
+
+    </body>
+</html>
