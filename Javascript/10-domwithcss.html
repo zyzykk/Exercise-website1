@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Chp 10: DOM Projects (Connect CSS to HTML) </title>
+
+        <style>
+            .subscribeButton{
+                background-color: black;
+                border-radius:23px;
+                color:white;
+                width:90px;
+                height:35px;
+                border:none;
+                font-weight:bold;
+                cursor:pointer;
+            }
+
+            .subscribeButton:active {
+                background-color:darkgrey;
+            }
+
+            .is-subscribed{
+                background-color:rgb(240,240,240);
+                color:black;
+            }
+
+            .js-cost-input{
+                padding-top:10px;
+                padding-bottom:10px;
+                padding-left:10px;
+            }
+
+            .calcButton{
+                padding-top:11px;
+                padding-bottom:11px;
+                padding-left:13px;
+                padding-right:13px;
+                font-size:15px;
+                background-color:green;
+                color:white;
+                border:none;
+                cursor:pointer;
+            }
+
+            .errorText {
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+
+<p><strong>Exercise 1: Youtube Subscribe Button </strong></p>
+    <p> - Use 'document.querySelector' to aim the button (need to assign a class and set a variance to the button), then use 'innerText' to change the content.</p>
+        <p> <button class = "subscribeButton" onclick = subscribe();> Subscribe </button></p>
+  <script>
+        function subscribe() {
+            const buttonElement = document.querySelector('.subscribeButton');
+            if (buttonElement.innerText === 'Subscribe') {
+                buttonElement.innerText = 'Subscribed';
+                buttonElement.classList.add('is-subscribed');
+            } else {
+                buttonElement.innerText = 'Subscribe';
+                buttonElement.classList.remove('is-subscribed');
+        }}
+  </script>
+
+
+<p><br><strong>Exercise 2: Rock Scissors Paper Game </strong></p>
+    <p>Design the game.</p>
+
+    <P>    <a href="10-RockGame.html">Click Here.</a>
+    </p>
+
+<p><br><strong>Exercise 3: Amazon Shipping Calculator </strong></p>
+
+            <p> Orders under $40 = +$10 Shipping</p>
+            <p> Orders above $40 = Free Shipping</p>
+
+            <input class="js-cost-input" placeholder="Cost of Order" onkeydown="handleCostKeyDown(event)">
+
+            <button class="calcButton" onclick="calculateTotal();"> Calculate </button>
+
+            <p class = "TotalCost"></p>
+
+        <script>
+
+            function handleCostKeyDown (event){
+                console.log(event.key); 
+                if(event.key === 'Enter') { 
+                    calculateTotal();}
+            }
+            function calculateTotal(){
+                const inputElement = document.querySelector('.js-cost-input');
+                console.log(inputElement.value);
+                let cost = Number(inputElement.value);
+                const response = document.querySelector('.TotalCost')
+
+                if(cost>0) {
+                    if(cost < 40) {cost = cost + 10;};
+                    response.classList.remove('errorText')
+                    response.innerHTML = `Total Cost: $${cost}`;
+                } else {
+                    response.classList.add('errorText')
+                    response.innerHTML = `Error: Cost cannot be less than or equal to $0`}
+                }
+            
+</script>
+
+<p><br><strong> Exercise 4: Create Three Button to show it is On or Off. Only one can on.
+<p></p>
+
+    <style>
+        .button4{
+            padding:7px 10px;
+            border:none;
+            background-color:lightgray;
+            border-radius:5px;
+            font-weight:520;
+            cursor:pointer;
+        }
+
+        .is-toggled{
+            background-color:red;
+            color:white;
+        }
+    </style>
+
+        <button class="button4 toggle-button1" onclick="onButton('.toggle-button1')">Gaming</button>
+        <button class="button4 toggle-button2" onclick="onButton('.toggle-button2')">Music</button>
+        <button class="button4 toggle-button3" onclick="onButton('.toggle-button3')">Tech</button>
+
+    <script>
+        function onButton(Selector){
+            const ButtonElem = document.querySelector(Selector);
+        if(!ButtonElem.classList.contains('is-toggled')) {
+            offPrevious();
+            ButtonElem.classList.add('is-toggled');
+        } else {
+            ButtonElem.classList.remove('is-toggled')}
+    }
+
+        function offPrevious(){
+            const previousButton = document.querySelector('.is-toggled')
+            if (previousButton) {
+                previousButton.classList.remove('is-toggled');
+            }
+        }
+    </script>
+    
+    </body>
+
+</html>

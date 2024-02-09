@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Chp 7: Functions </title>
+    </head>
+    <body>
+  
+        <strong>Exercise 1: Pro version Rock Paper Scissors Game<br></strong><BR>
+            <button onclick="
+                playGame ('paper');"> Rock </button>
+    
+            <button onclick="
+                playGame ('paper');"> Paper </button>
+    
+            <button onclick="
+                playGame ('scissors');"> Scissors </button>
+    
+
+        <script>
+            function pickComputerMove () {
+                const randomNumber = Math.random();
+                
+                let computerMove = '';
+
+                if(randomNumber >=0 && randomNumber <1/3) {
+                computermove = 'rock'
+                } else if (randomNumber >=1/3 && randomNumber <2/3) {
+                computermove = 'paper'
+                } else if (randomNumber >=2/3 && randomNumber <1) {
+                computermove = 'scissors'
+                }
+                
+                return computerMove;
+            }
+
+            function playGame(playMove) {
+                const computerMove = pickComputerMove();
+                
+                console.log(computermove);
+                
+                let result = ''
+
+                if (playMove === 'scissors'){
+                    if (computermove === 'rock') {
+                    result = 'You Lose.';
+                } else if (computermove === 'paper') {
+                    result = 'You Win.';
+                } else if (computermove = 'scissors') {
+                    result = 'Tie.';
+                }
+
+                } else if (playMove === 'paper'){
+                    if (computermove === 'rock') {
+                    result = 'You Win.';
+                } else if (computermove === 'paper') {
+                    result = 'Tie.';
+                } else if (computermove = 'scissors') {
+                    result = 'You Lose.';
+                }
+    
+                } else if (playMove === 'rock'){
+                    if (computermove === 'rock') {
+                        result = 'Tie.'
+                    } else if (computermove === 'paper') {
+                        result = 'You Lose.'
+                    } else if (computermove = 'scissors') {
+                        result = 'You Win.'
+                    }
+                }
+    
+                alert(`You picked ${playMove}. Computer picked ${computermove}. ${result}`) }
+
+                function greet (name = 'there') {
+                    console.log (`Hello ${name}!`);
+                }
+
+                greet('Kevin');
+        </script>
+
+        <p><br><strong>Exercise 2: Calculator<br></strong>
+
+                <p>
+                  <button onclick="
+                    updateCalculation('1');
+                  ">1</button>
+            
+                  <button onclick="
+                    updateCalculation('2');
+                  ">2</button>
+            
+                  <button onclick="
+                    updateCalculation('3');
+                  ">3</button>
+            
+                  <button onclick="
+                    updateCalculation(' + ');
+                  ">+</button>
+                </p>
+            
+                <p>
+                  <button onclick="
+                    updateCalculation('4');
+                  ">4</button>
+            
+                  <button onclick="
+                    updateCalculation('5');
+                  ">5</button>
+            
+                  <button onclick="
+                    updateCalculation('6');
+                  ">6</button>
+            
+                  <button onclick="
+                    updateCalculation(' - ');
+                  ">-</button>
+                </p>
+            
+                <p>
+                  <button onclick="
+                    updateCalculation('7');
+                  ">7</button>
+            
+                  <button onclick="
+                    updateCalculation('8');
+                  ">8</button>
+            
+                  <button onclick="
+                    updateCalculation('9');
+                  ">9</button>
+            
+                  <button onclick="
+                    updateCalculation(' * ');
+                  ">*</button>
+                </p>
+            
+                <p>
+                  <button onclick="
+                    updateCalculation('0');
+                  ">0</button>
+            
+                  <button onclick="
+                    updateCalculation('.');
+                  ">.</button>
+            
+                  <button onclick="
+                    // Note: eval() takes a string and runs it as code.
+                    // Avoid using eval() in real world projects since
+                    // it can potentially be given harmful code to run.
+                    // Only use eval() for learning purposes.
+                    calculation = eval(calculation);
+                    console.log(calculation);
+                  ">=</button>
+            
+                  <button onclick="
+                    updateCalculation(' / ');
+                  ">/</button>
+                </p>
+            
+                <p>
+                  <button onclick="
+                    calculation = '';
+                    console.log(calculation);
+                  ">Clear</button>
+                </p>
+            
+                <script>
+                  let calculation = '';
+            
+                  function updateCalculation(value) {
+                    calculation += value;
+                    console.log(calculation);
+                  }
+                </script></p>
+    </body>
+</html>

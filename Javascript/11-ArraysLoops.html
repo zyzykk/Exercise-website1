@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Chp 11: Arrays and Loops </title>
+
+        <style>
+
+            .js-task {
+                padding:10px;
+                padding-left:7px;
+                font-size:15px;
+            }
+            
+            .js-due-date{
+                padding:10px;
+            }
+
+            .taskgrid, .titlegrid{
+                display:grid;
+                grid-template-columns:200px 150px 100px;
+                column-gap:10px;
+                row-gap:10px;
+                align-items:center;
+            }
+
+            .taskgrid{
+                font-size:18px;
+                padding-left:0px;
+                
+            }
+
+            .titlegrid{margin-bottom:10px;
+            align-items:stretch;}
+
+            .addbutton{
+                background-color: darkred;
+                color:white;
+                border-radius:0px;
+                border:none;
+                font-size:15px;
+                cursor:pointer;
+            }
+
+
+            .deletebutton{
+                background-color: green;
+                color:white;
+                border:none;
+                border-radius:0px;
+                font-size:15px;
+                padding: 10px;
+                cursor:pointer;
+            }
+        </style>
+    </head>
+    <body>
+
+        <p><strong>Exercise 1: Make a Todo List </strong></p>
+        <div class="titlegrid">
+        <input class="js-task" placeholder="Enter Tasks"> 
+
+        <input class="js-due-date" type="date">
+
+        <button class="addbutton" onclick="addTasks()"> Add </button></div>
+
+        <div class = "js-task-div taskgrid"></div>
+
+        <script>
+            const taskList = [];
+
+            function renderTaskList (){
+                let taskListHTML = '';
+                localStorage.getItem('taskList');
+
+                taskList.forEach(function(tasksObject, index){
+                    const name = tasksObject.name;
+                     const duedate = tasksObject.duedate;
+                     const html = `
+                     <div style="padding-left:5px;">${name} </div>
+                     <div>${duedate} </div>
+                       <button class="deletebutton" onclick="
+                        taskList.splice(${index}, 1);
+                        renderTaskList();"> Delete </button>`;
+                       
+                     taskListHTML += html;
+                     localStorage.setItem('taskList',taskListHTML);})
+
+                /*for(let i=0; i<taskList.length; i++) {
+                     const tasksObject = taskList[i];
+                     const name = tasksObject.name;
+                     const duedate = tasksObject.duedate;
+                     const html = `
+                     <div style="padding-left:5px;">${name} </div>
+                     <div>${duedate} </div>
+                       <button class="deletebutton" onclick="
+                        taskList.splice(${i}, 1);
+                        renderTaskList();"> Delete </button>`;
+                       
+                     taskListHTML += html;
+                }*/
+
+                document.querySelector('.js-task-div').innerHTML = `${taskListHTML}`;
+
+            }
+            
+            function addTasks(){
+                const inputTask = document.querySelector('.js-task');
+                const name = inputTask.value;
+
+                const inputDate = document.querySelector('.js-due-date');
+                const duedate = inputDate.value;
+                
+                taskList.push({name:name,
+                duedate:duedate});
+
+                inputTask.value = '';
+                inputDate.value = '';
+
+                renderTaskList();
+                } 
+            
+/* Function to search the last value in an array-------------------------------------------------------------
+                
+        function getLastValue(array){
+            const displaylast = array[array.length-1];
+            console.log(displaylast);
+                }
+            let numberss=[20,30,34];
+            getLastValue(numberss)*/
+
+/* Function to swap the first and last value in an array -----------------------------------------------------
+
+        function arraySwap(array){
+            const firstvalue = array[0];
+            const lastvalue = array [array.length-1];
+            array[0]= lastvalue;
+            array[array.length-1]= firstvalue;
+            console.log(array);
+        }
+        let array2 = ['hi','bye','go'];
+        arraySwap(array2); */
+
+/* Create a loop that counts up from 0 to 10 by 2.-------------------------------------------------------------
+
+        for(i=0; i<=10; i+=2) {
+            console.log(i);
+        }
+
+        let i=0;
+        while(i<10){
+            i+=2;
+            console.log(i);
+        }*/
+
+/* Create a function which shows an array and increase the values by 1.----------------------------------------
+
+        function addOne(array) {
+            let addednum = [];
+            for(i=0; i<array.length; i++){
+                const orinum = array[i]+1;
+                addednum.push(orinum);
+            } console.log(addednum)
+        }
+
+        let number1 = [2,3,4];
+        addOne(number1); */
+
+/* Create a function to add two arrays tgt---------------------------------------------------------------------
+
+        function addArrays(array1, array2) {
+            let newArray = [];
+            for(i=0; i<array1.length; i++) {
+                const addednumber = array1[i] + array2[i];
+                newArray.push(addednumber);
+            } console.log(newArray)
+        }
+
+        let array3 = [12,13,20];
+        let array4 = [15,16,17];
+        addArrays(array3,array4);*/
+
+/* Create a function to show the min and max value in an array-------------------------------------------------
+        
+            function minMax(nums) {
+                // We'll set the starting values of min and max
+                // to null this time.
+                const result = {
+                min: null,
+                max: null
+                };
+
+                for (let i = 0; i < nums.length; i++) {
+                const value = nums[i];
+
+                // If the min is null OR the value is
+                // less than the min, update the min.
+                if (result.min === null || value < result.min) {
+                    result.min = value;
+                }
+
+                // If the max is null OR the value is
+                // greater than the max, update the max.
+                if (result.max === null || value > result.max) {
+                    result.max = value;
+                }
+
+                // We have to use 2 if-statements above instead of
+                // an if-else statement. This makes sure both the
+                // min and max are set if they are null.
+                }
+
+                return result;
+            }
+
+            console.log(minMax([1, -3, 5]));
+            console.log(minMax([-2, 3, -5, 7, 10]));
+
+            console.log(minMax([]));
+            console.log(minMax([3]));*/
+
+        </script>
+
+
+<p><br><strong> Exercise 2: </strong></p>
+    <p>Create loop display 1 to 20, if divisible by 3 display "Fizz" and 5 display "Buzz"</p>
+
+        <script>
+
+            for (i=1; i<=20; i++){
+                let resultex2 = '';
+                if (i % 3 === 0 && i % 5 === 0) {resultex2 += "FizzBuzz"}
+                else if (i % 5 === 0) {resultex2 += "Buzz"}
+                else if (i % 3 === 0) {resultex2+= "Fizz"}
+                else {resultex2 += i};
+
+                console.log(resultex2);
+            }
+
+        </script>
+
+<p><br><strong> Exercise 3: </strong></p>
+<p>Create function to show where is the first appearance of a value. If doesnt exist return -1.</p>
+
+        <script>
+
+            function findIndex(array,word){
+                for(let i=0; i<array.length; i++){
+                    if(array[i] === word){
+                        return i;
+                    } {continue;} 
+                } return -1
+            }
+            const arrayex3 = ['green','red','blue','red']
+            console.log(findIndex(arrayex3, 'blue'))
+            
+        </script>
+    </body>
+
+</html>

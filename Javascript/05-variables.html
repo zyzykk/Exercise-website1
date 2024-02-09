@@ -7,44 +7,45 @@
         <strong>Exercise 1: Cart Quantity<br></strong><BR>
 
         <button onclick="
-        console.log(`Cart Quantity: ${cartquantity}`)"> Show Quantity </button>
+        showQuantity();"> Show Quantity </button>
 
         <button onclick="
         cartquantity>=10 ? 
         alert('The cart is full. Max Items: 10.') :
         cartquantity = cartquantity + 1;
-        console.log(`Cart Quantity: ${cartquantity}`);
+        showQuantity();
         "> Add to Cart </button>
 
         <button onclick="
         cartquantity>=9 ? 
         alert('The cart is full. Max Items: 10.') :
         cartquantity = cartquantity + 2;
-        console.log(`Cart Quantity: ${cartquantity}`)">+2</button>
+        showQuantity();">+2</button>
 
         <button onclick="
         cartquantity>=8 ? 
         alert('The cart is full. Max Items: 10.') :
         cartquantity = cartquantity + 3;
-        console.log(`Cart Quantity: ${cartquantity}`)">+3</button>
+        showQuantity();">+3</button>
 
         <button onclick="
         cartquantity<=0 ? 
         alert('Not enough items in the cart.') :
         cartquantity --;
-        console.log(`Cart Quantity: ${cartquantity}`)">-1</button>
+        showQuantity();">-1</button>
 
         <button onclick="
         cartquantity <= 1 ? 
         alert('Not enough items in the cart.') :
         cartquantity -= 2;
-        console.log(`Cart Quantity: ${cartquantity}`)">-2</button>
+        showQuantity();">-2</button>
 
         <button onclick="
         cartquantity = cartquantity - cartquantity;
         console.log('Cart was reset.')
-        console.log(`Cart Quantity: ${cartquantity}`)"> Reset Cart </button>
+        showQuantity();"> Reset Cart </button>
 
+        <p class ="js-quantity"></p>
         <script>
 
 /*There are three ways to create VARIABLES
@@ -58,11 +59,15 @@
 <!--Exercise 2: You ordered 1 coffee (RM5), 2 bagels (RM3 each), 1 soup(RM9), 
                 Display'Cost of Food: RM__' with tax 10%-->
 
-    <br><br><br><strong> Exercise 2: Cost of Food <br><br></strong>
+    <br><br><strong> Exercise 2: Cost of Food <br><br></strong>
 
     <script>
     let costofFood=0
     let products=''
+
+    function showQuantity(){
+        document.querySelector('.js-quantity').innerHTML = `Cart Quantity: ${cartquantity}`
+    }
     </script>
 
     <button onclick="

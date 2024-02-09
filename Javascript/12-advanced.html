@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Chp 12: Advanced Functions </title>
+    </head>
+    <body>
+        <p><strong>Q1 : Build a button when click shows loading and change to finished after 1 second. </strong></p>
+
+        <button class="finishbutton" onclick="finished()"> Finish</button>
+        <script>
+            function finished(){
+                const buttonElem = document.querySelector('.finishbutton');
+
+                buttonElem.innerText = "Loading...";
+
+                setTimeout(function(){
+                if (!buttonElem.classList.contains('finished'))
+                {buttonElem.classList.add('finished');
+                buttonElem.innerText = "Finished!"}
+                else {buttonElem.classList.remove('finished');
+                buttonElem.innerText= "Finish"}},1000);
+
+                }            
+        
+        </script>
+
+        <p><strong>Q2 : Build a button when click shows added for 2 sec </strong></p>
+
+        <button onclick="addedprod()"> Add to Cart. </button>
+
+        <p class="displayadd"></p>
+        <script>
+            let timeoutID;
+
+            function addedprod() {
+                const prodList = document.querySelector('.displayadd');
+
+                clearTimeout(timeoutID);
+
+                prodList.innerText = "Added.";
+
+                timeoutID= setTimeout(function(){
+                    prodList.innerText = "";
+                },2000)}
+            
+        </script>
+
+        <p><strong>Q3 : Create a arrow function to multiply 2 numbers in the array. </strong></p>
+
+        <script>
+
+            const multiply = (num1,num2) => num1*num2;
+            console.log(multiply(2,3));
+        </script>
+
+        <br><p><strong>Q4 : Create a function to add the value in array by number mentioned.<br>
+                    Ex, addNum([1,2,3],2) ->[3,4,5] </strong></p>
+
+        <script>
+
+            const addNum = (array,num) => {
+                return array.map((value) => value +num);
+            }
+
+            console.log(addNum([1,2,3],2));
+        </script>
+
+        <br><p><strong>Q5 : Create a function to remove specific value in the array.<br>
+            Ex, removeEgg(['egg','apple','egg','ham']) -> ['apple','ham'] </strong></p>
+
+            <script>
+
+                const removeEgg = (foods) => {
+                    return foods.filter((food) => food !== 'egg');
+                }
+            </script>
+    </body>
+</html>
